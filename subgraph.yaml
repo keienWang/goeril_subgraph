@@ -5,7 +5,7 @@ schema:
   file: ./schema.graphql
 dataSources:
   - kind: ethereum
-    name: ETHTornado
+    name: Instance-0.1-eth
     network: goerli
     source:
       address: "0xb7c85629e6a35799e523cdbf83f83c84dd3daa48"

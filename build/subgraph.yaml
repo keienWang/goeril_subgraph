@@ -1,0 +1,29 @@
+specVersion: 1.0.0
+indexerHints:
+  prune: auto
+schema:
+  file: schema.graphql
+dataSources:
+  - kind: ethereum
+    name: Instance-0.1-eth
+    network: goerli
+    source:
+      address: "0xb7c85629e6a35799e523cdbf83f83c84dd3daa48"
+      abi: ETHTornado
+      startBlock: 10456460
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Deposit
+        - Withdrawal
+      abis:
+        - name: ETHTornado
+          file: Instance-0.1-eth/abis/ETHTornado.json
+      eventHandlers:
+        - event: Deposit(indexed bytes32,uint32,uint256)
+          handler: handleDeposit
+        - event: Withdrawal(address,bytes32,indexed address,uint256)
+          handler: handleWithdrawal
+      file: Instance-0.1-eth/Instance-0.1-eth.wasm
