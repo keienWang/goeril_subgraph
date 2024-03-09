@@ -8,9 +8,78 @@ dataSources:
     name: Instance-0.1-eth
     network: goerli
     source:
-      address: "0xb7c85629e6a35799e523cdbf83f83c84dd3daa48"
+      address: "0x54647F7e1A03eC636080fC9A2EBE22f045Dd903A"
       abi: ETHTornado
-      startBlock: 10456460
+      startBlock: 10645421
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Deposit
+        - Withdrawal
+      abis:
+        - name: ETHTornado
+          file: ./abis/ETHTornado.json
+      eventHandlers:
+        - event: Deposit(indexed bytes32,uint32,uint256)
+          handler: handleDeposit
+        - event: Withdrawal(address,bytes32,indexed address,uint256)
+          handler: handleWithdrawal
+      file: ./src/eth-tornado.ts
+  - kind: ethereum
+    name: Instance-1-eth
+    network: goerli
+    source:
+      address: "0xe6Ec734814dAf4A0402dDb9Ef790e0092decC46c"
+      abi: ETHTornado
+      startBlock: 10645431
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Deposit
+        - Withdrawal
+      abis:
+        - name: ETHTornado
+          file: ./abis/ETHTornado.json
+      eventHandlers:
+        - event: Deposit(indexed bytes32,uint32,uint256)
+          handler: handleDeposit
+        - event: Withdrawal(address,bytes32,indexed address,uint256)
+          handler: handleWithdrawal
+      file: ./src/eth-tornado.ts
+  - kind: ethereum
+    name: Instance-10-eth
+    network: goerli
+    source:
+      address: "0x78259d2C0B5d18d90967Bb533b8fBD08C40A93a1"
+      abi: ETHTornado
+      startBlock: 10645439
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Deposit
+        - Withdrawal
+      abis:
+        - name: ETHTornado
+          file: ./abis/ETHTornado.json
+      eventHandlers:
+        - event: Deposit(indexed bytes32,uint32,uint256)
+          handler: handleDeposit
+        - event: Withdrawal(address,bytes32,indexed address,uint256)
+          handler: handleWithdrawal
+      file: ./src/eth-tornado.ts
+  - kind: ethereum
+    name: Instance-100-eth
+    network: goerli
+    source:
+      address: "0xEDD5394b6ed3773A284B6BECcB728c7Fc7f8CB3d"
+      abi: ETHTornado
+      startBlock: 10645444
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7

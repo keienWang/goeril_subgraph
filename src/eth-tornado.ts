@@ -4,12 +4,16 @@ import {
 } from "../generated/ETHTornado/ETHTornado"
 import { Deposit, Withdrawal } from "../generated/schema"
 
+import { contractsToInstances } from './contractsToInstances';
 export function handleDeposit(event: DepositEvent): void {
   let entity = new Deposit(event.transaction.hash.toHex() + '-' + event.logIndex.toString());
 
+  let result = contractsToInstances.get(event.address.toHexString()).split('-');
 
-  entity.amount ="0.1";
-  entity.currency = "eth";
+  entity.amount = result[1];
+  entity.currency = result[0];
+
+ 
 
   entity.from = event.transaction.from;
   entity.index = event.params.leafIndex;
@@ -25,8 +29,10 @@ export function handleDeposit(event: DepositEvent): void {
 export function handleWithdrawal(event: WithdrawalEvent): void {
   let entity = new Withdrawal(event.transaction.hash.toHex() + '-' + event.logIndex.toString());
 
-  entity.amount = "0.1";
-  entity.currency = "eth";
+  let result = contractsToInstances.get(event.address.toHexString()).split('-');
+
+  entity.amount = result[1];
+  entity.currency = result[0];
 
   entity.to = event.params.to;
   entity.fee = event.params.fee;
